@@ -1,11 +1,11 @@
 class Airport
-
-  def initialize()
+  def initialize
     @planes = []
   end
 
   def landPlane(plane)
     fail "already landed" if plane.landed == true
+    plane.landPlane
     @planes << plane
   end
 

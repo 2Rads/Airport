@@ -2,7 +2,7 @@ require 'Airport'
 
 describe Airport do
   let(:plane_landed) { double :Airplane, :landed => true }
-  let(:plane_notLanded) { double :Airplane, :landed => false } 
+  let(:plane_notLanded) { double :Airplane, :landed => false, :landPlane => landed = true } 
 
   it 'create Airport class' do
     airport = Airport.new
@@ -20,7 +20,7 @@ describe Airport do
   end
 
   it 'can let a plane take off' do
-    plane = Airplane.new(false)
+    plane = Airplane.new
     subject.landPlane(plane)
     expect(subject.takeOff.landed).to eq false
   end
@@ -28,4 +28,14 @@ describe Airport do
   it 'cannot remove plane when airport is empty' do
     expect{ subject.takeOff }.to raise_error 'No planes at airport'
   end
+
+  it 'verifies if a plane is at the airport' do
+    plane = Airplane.new
+    expect(plane.landed).to eq false
+    subject.landPlane(plane)
+    expect(plane.landed).to eq true
+    subject.takeOff
+    expect(plane.landed).to eq false
+  end
+  
 end
