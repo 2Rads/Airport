@@ -15,6 +15,7 @@ class Airport
     fail "Bad weather" if @weather == :stormy
     plane.landPlane
     @planes << plane
+    return plane
   end
 
   def takeOff
