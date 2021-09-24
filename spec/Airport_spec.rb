@@ -50,4 +50,22 @@ describe Airport do
     expect{ airport.landPlane(plane_notLanded) }.to raise_error 'Airport full'
     expect(airport.instance_variable_get(:@maxPlanes)).to eq 10
   end
+
+  describe '#weather' do
+    it 'can change weather' do
+      subject.changeWeather(:stormy)
+      expect(subject.instance_variable_get(:@weather)).to eq :stormy
+    end
+
+    it 'cannot land or take off in stormy weather' do
+      subject.changeWeather(:stormy)
+      expect{subject.landPlane(plane_notLanded)}.to raise_error "Bad weather"
+    end
+
+    it 'cannot take off in stormy weather' do
+      subject.landPlane(plane_notLanded)
+      subject.changeWeather(:stormy)
+      expect{subject.takeOff}.to raise_error "Bad weather"
+    end
+  end
 end
