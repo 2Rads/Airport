@@ -24,4 +24,8 @@ describe Airport do
     subject.landPlane(plane)
     expect(subject.takeOff.landed).to eq false
   end
+
+  it 'cannot remove plane when airport is empty' do
+    expect{ subject.takeOff }.to raise_error 'No planes at airport'
+  end
 end

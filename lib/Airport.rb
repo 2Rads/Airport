@@ -10,6 +10,7 @@ class Airport
   end
 
   def takeOff
+    fail "No planes at airport" if @planes.length == 0
     plane = @planes.pop
     plane.takeOff
     return plane
