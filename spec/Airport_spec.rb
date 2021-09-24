@@ -14,4 +14,8 @@ describe Airport do
     subject.landPlane(plane_notLanded)
     expect(subject.instance_variable_get(:@planes).pop).to eq plane_notLanded
   end
+
+  it 'cannot land a landed plane' do
+    expect{ subject.landPlane(plane_landed) }.to raise_error 'already landed'
+  end
 end
