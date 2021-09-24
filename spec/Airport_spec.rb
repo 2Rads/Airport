@@ -43,4 +43,11 @@ describe Airport do
     max.times{ subject.landPlane(plane_notLanded) }
     expect{ subject.landPlane(plane_notLanded) }.to raise_error 'Airport full'
   end
+
+  it 'can change max size of airport' do
+    airport = Airport.new(10)
+    10.times{ airport.landPlane(plane_notLanded) }
+    expect{ airport.landPlane(plane_notLanded) }.to raise_error 'Airport full'
+    expect(airport.instance_variable_get(:@maxPlanes)).to eq 10
+  end
 end
