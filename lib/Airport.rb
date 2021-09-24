@@ -8,4 +8,10 @@ class Airport
     fail "already landed" if plane.landed == true
     @planes << plane
   end
+
+  def takeOff
+    plane = @planes.pop
+    plane.takeOff
+    return plane
+  end
 end

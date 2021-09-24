@@ -12,4 +12,10 @@ describe Airplane do
     planeB = Airplane.new(false)
     expect(planeB.landed).to eq false
   end
+
+  it 'allows plane to take off' do
+    plane = Airplane.new(true)
+    plane.takeOff
+    expect(plane.landed).to eq false
+  end
 end

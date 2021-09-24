@@ -18,4 +18,10 @@ describe Airport do
   it 'cannot land a landed plane' do
     expect{ subject.landPlane(plane_landed) }.to raise_error 'already landed'
   end
+
+  it 'can let a plane take off' do
+    plane = Airplane.new(false)
+    subject.landPlane(plane)
+    expect(subject.takeOff.landed).to eq false
+  end
 end

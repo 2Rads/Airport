@@ -4,4 +4,8 @@ class Airplane
   def initialize(landed)
     @landed = landed
   end
+
+  def takeOff
+    @landed = false
+  end
 end
