@@ -1,10 +1,15 @@
 class Airport
-  def initialize
+  @maxPlanes
+  MAXSIZE = 50 #tiny airport
+
+  def initialize(maxSize = MAXSIZE)
     @planes = []
+    @maxPlanes = maxSize
   end
 
   def landPlane(plane)
-    fail "already landed" if plane.landed == true
+    fail "already landed" if (plane.landed == true)
+    fail "Airport full" if (@planes.length == @maxPlanes)
     plane.landPlane
     @planes << plane
   end

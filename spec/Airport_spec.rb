@@ -37,5 +37,10 @@ describe Airport do
     subject.takeOff
     expect(plane.landed).to eq false
   end
-  
+
+  it 'cannot add more than max planes' do
+    max = subject.instance_variable_get(:@maxPlanes)
+    max.times{ subject.landPlane(plane_notLanded) }
+    expect{ subject.landPlane(plane_notLanded) }.to raise_error 'Airport full'
+  end
 end
